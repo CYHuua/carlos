@@ -1,0 +1,10 @@
+.carlos__cell-title{padding:10px 0 10px 12px;font-size:15px;}
+.carlos__cell-slot{padding-left:16px;border-top:1px solid rgba(7,17,27,0.1);border-bottom:1px solid rgba(7,17,27,0.1);}
+
+.carlos__cell-item{display:flex;align-items:center;padding:10px 0;}
+.carlos__cell-item + .carlos__cell-item{border-top:1px solid rgba(7,17,27,0.1);}
+.carlos__cell-item .item__icon{width:20px;height:20px;display:inline-block;margin-right:8px;}
+.carlos__cell-item .item__title{font-size:15px;margin-right:10px;flex:1;}
+.carlos__cell-item .item__value{font-size:14px;color:#969696;margin-right:8px;}
+.carlos__cell-item .item__gt{width:6px;height:6px;border-top:2px solid #969696;border-right:2px solid #969696;transform:rotate(45deg);margin-right:8px;}
+.carlos__cell-item .carlos__switch{margin-right:8px;}

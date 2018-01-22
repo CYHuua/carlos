@@ -1,0 +1,16 @@
+.carlos__flexbox{width:100%;display:flex;}
+.flex-vertical{flex-direction:column;}
+.flex-wrap{flex-wrap:wrap;}
+.flex-nowrap{flex-wrap:nowrap;}
+/* justify */
+.justify-start{justify-content:flex-start;}
+.justify-end{justify-content:flex-end;}
+.justify-center{justify-content:center;}
+.justify-space-between{justify-content:space-between;}
+.justify-space-around{justify-content:space-around;}
+/* align */
+.align-start{align-items:flex-start;}
+.align-end{align-items:flex-end;}
+.align-center{align-items:center;}
+.align-baseline{align-items:baseline;}
+.align-stretch{align-items:stretch;}
