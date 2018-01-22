@@ -1,5 +1,2 @@
 # vue-carlos
-Plugins for vue project
-Plugins for vue project
-Plugins for vue project
-Plugins for vue project
+Plugins and Components for Vue.js project

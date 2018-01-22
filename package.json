@@ -1,7 +1,7 @@
 {
   "name": "vue-carlos",
-  "description": "Ccrazier's Vue.js plugins",
-  "version": "1.0.1",
+  "description": "ccrazier's plugins and components for Vue.js project",
+  "version": "1.0.2",
   "author": "",
   "license": "MIT",
   "private": false,
@@ -10,6 +10,7 @@
     "type": "git",
     "url": "https://github.com/CYHuua/vue-carlos"
   },
+  "homepage": "https://github.com/CYHuua/vue-carlos#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
