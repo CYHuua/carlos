@@ -23,9 +23,6 @@ export default {
       default: '#fff'
     }
   },
-  data () {
-    return {}
-  },
   computed: {
     styleObj () {
       let styleObj = {}

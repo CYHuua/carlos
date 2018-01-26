@@ -6,55 +6,59 @@
     name: 'carlos-countdown',
     data () {
       return {
+        couldStart: true,
         content: ''
       }
     },
     props: {
-      lefttime: {
-        type: String
+      leftcount: {
+        type: Number,
+        default: 60
+      },
+      inittext: {
+        type: String,
+        default: '默认'
       },
       endtext: {
         type: String,
-        default: '活动已结束'
+        default: '重新开始'
       },
-      endback: {
-        type: Function
+      format: {
+        type: String,
+        default: '20秒'
       }
     },
     created () {
+      var format = this.format
+      var reg = /([\u4E00-\u9FA5\s]*)(\d+)([\u4E00-\u9FA5\s]*)/ // 匹配文字、空格、秒数（数字）
+      var matchArr = format.match(reg)
+      this.prevText = matchArr[1]
+      this.nextText = matchArr[3]
+      this.content = this.inittext
     },
     mounted () {
-      this.countdown(this.lefttime) // 毫秒
+      var self = this
+      self.$on('start', () => {
+        if (self.couldStart) {
+          self.couldStart = false
+          self.$emit('startback')
+          self.countdown(self.leftcount)
+        }
+      })
     },
     methods: {
-      countdown (lefttime) {
+      countdown (leftcount) {
         var self = this
-        var t = lefttime
-        var timer = setInterval(function () {
-          if (t > 0) {
-            var days = Math.floor(t / (1000 * 60 * 60 * 24))
-            var hours = Math.floor(t / (1000 * 60 * 60) % 24)
-            var minutes = Math.floor(t / (1000 * 60) % 60)
-            var seconds = Math.floor(t / 1000 % 60)
-            hours = hours < 10 ? '0' + hours : hours
-            minutes = minutes < 10 ? '0' + minutes : minutes
-            seconds = seconds < 10 ? '0' + seconds : seconds
-            var format = ''
-            if (days > 0) {
-              format = days + '天' + hours + '小时' + minutes + '分' + seconds + '秒'
-            }
-            if (days <= 0 && hours > 0) {
-              format = hours + '小时' + minutes + '分' + seconds + '秒'
-            }
-            if (days <= 0 && hours <= 0) {
-              format = minutes + '分' + seconds + '秒'
-            }
-            t = t - 1000
-            self.content = format
+        var t = parseInt(leftcount)
+        var timer = setInterval(() => {
+          if (t > 1) {
+            t --
+            self.content = this.prevText + t + this.nextText
           } else {
             clearInterval(timer)
-            self.content = self.endtext
-            typeof self.endback === 'function' && self.endback()
+            self.couldStart = true
+            self.content = this.endtext || this.prevText + this.leftcount + this.nextText
+            self.$emit('endback')
           }
         }, 1000)
       }

@@ -9,9 +9,10 @@
 
 <script>
   export default {
+    name: 'carlos-message',
     data () {
       return {
-        zindex: 1000,
+        zindex: 9999,
         show: false,
         type: 'short',
         content: '',
@@ -25,17 +26,20 @@
     },
     methods: {
       success () {
-        setTimeout(() => {
-          this.show = false
-        }, this.delay)
+        var self = this
+        self.$nextTick(() => {
+          setTimeout(() => {
+            self.show = false
+          }, self.delay)
+        })
       }
     }
   }
 </script>
 
-<style type="text/css">
-  .message__mask{position:fixed;left:0;top:0;z-index:999;width:100%;height:100%;}
-  .message__content{background:rgba(0,0,0,.7);position:fixed;left:50%;top:50%;z-index:1000;-webkit-transform:translate(-50%, -50%);font-size:15px;color:#fff;padding:15px;border-radius:9px;width:auto;text-align:center;}
+<style type="text/css" scoped>
+  .message__mask{position:fixed;left:0;top:0;z-index:8888;width:100%;height:100%;}
+  .message__content{background:rgba(0,0,0,.7);position:fixed;left:50%;top:50%;z-index:9999;-webkit-transform:translate(-50%, -50%);font-size:15px;color:#fff;padding:15px;border-radius:9px;width:auto;text-align:center;}
   .message__content.content__long{width:80%;}
   .opacity-enter{opacity:0;}
   .opacity-enter-active{transition:opacity .4s;}

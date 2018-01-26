@@ -2,8 +2,9 @@
   <div class="carlos__cell-item">
     <img class="item__icon" v-if="isIcon" src="icon" />
     <div class="item__title">{{title}}</div>
-    <div class="item__value" v-if="value">{{value}}</div>
-    <slot></slot>
+    <div class="item__value">
+      <slot name="value"></slot>
+    </div>
     <div class="item__gt" v-if="isLink"></div>
   </div>
 </template>
@@ -19,9 +20,6 @@ export default {
       type: String,
       default: '默认'
     },
-    value: {
-      type: String
-    },
     isIcon: {
       type: Boolean,
       default: false
@@ -31,12 +29,6 @@ export default {
       default: false
     }
   },
-  data () {
-    return {}
-  },
-  mounted () {
-    this.$emit('init')
-  },
   computed: {
     styleObj () {
       let styleObj = {}
@@ -44,7 +36,6 @@ export default {
         styleObj['marginBottom'] = this.gutter + 'px'
       }
     }
-  },
-  methods: {}
+  }
 }
 </script>

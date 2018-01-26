@@ -1,20 +1,7 @@
 import Vue from 'vue'
 import LoadingComponent from './loading.vue'
-// 合并对象函数，这个方法是会改变，第一个参数的值的
-function merge (target) {
-  for (let i = 1, j = arguments.length; i < j; i++) {
-    let source = arguments[i] || {}
-    for (let prop in source) {
-      if (source.hasOwnProperty(prop)) {
-        let value = source[prop]
-        if (value !== undefined) {
-          target[prop] = value
-        }
-      }
-    }
-  }
-  return target
-}
+import { merge } from '../../utils'
+
 // 创建一个组件实例
 let instance
 // extend是构造一个组件的语法器，传入参数，返回一个组件
@@ -25,6 +12,10 @@ let initIntance = () => {
   instance = new LoadingConstructor({
     el: document.createElement('div')
   })
+  let node = document.querySelector('#carlos__loading')
+  if (node && node.parentNode) {
+    node.parentNode.removeChild(node)
+  }
   document.body.appendChild(instance.$el)
 }
 
